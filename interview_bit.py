@@ -40,27 +40,30 @@ def get_starting_gas_station(a, b):
     return -1
 
 
+##
+# An intuitive way to find the majority
+# element is to first sort the numbers in the
+# array in ascending order. That way we can
+# easily count the number of successive
+# integers that are identical to each other in the array
+##
 def find_majority_element(array):
     array.sort()
     count = 1
     prev = array[0]
 
-    # An intuitive way to find the majority
-    # element is to first sort the numbers in the
-    # array incrementally. That way we can
-    # easily count the number of successive
-    # integers that are identical to each other in the array
     for i in range(1, len(array)):
         # count successive elements that are equal
         if prev == array[i]:
             count += 1
         # if the previous element doesn't equal the current element
-        # then reset count as that element was not a majority element
+        # then reset count as that element was not the majority element
         else:
-            count = 0
+            count = 1
 
-        # If we have found majority element, return element
-        if count >= floor(len(array)/2):
+        # If we have found the majority element, return element
+        if count > floor(len(array)/2):
+            print(count)
             return array[i]
 
         # rewrite 'prev' for next go-around
